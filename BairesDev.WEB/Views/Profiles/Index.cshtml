@@ -1,0 +1,74 @@
+﻿@model IEnumerable<BairesDev.DAL.Models.Profile>
+
+<h3>Find the best profiles filtering by given search parameters</h3>
+<div class="col-md-3">
+    @Html.Partial("SearchParameters")
+</div>
+
+<div class="col-md-9">
+    <p>
+        @Html.Label("Send Profiles to:", htmlAttributes: new { @class = "control-label" })
+        @Html.TextBox("Campaign", null, htmlAttributes: new { @class = "form-control" })
+        <input id="sendButton" type="submit" value="Send" class="btn btn-default" />
+
+    </p>
+    Showing @ViewBag.Count Results
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GeographicArea)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CurrentRole)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Industry)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Country)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GeographicArea)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CurrentRole)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Industry)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id=item.Id })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+
